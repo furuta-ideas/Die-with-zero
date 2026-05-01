@@ -19,6 +19,8 @@
     --google-green-bg: #e6f4ea;
     --google-purple: #9334e6;
     --google-purple-bg: #f3e8fd;
+    --google-teal: #00897b;
+    --google-teal-bg: #e0f2f1;
     --text-primary: #202124;
     --text-secondary: #5f6368;
     --text-tertiary: #80868b;
@@ -31,21 +33,17 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Google Sans', 'Noto Sans JP', -apple-system, sans-serif;
-    background: var(--bg);
-    min-height: 100vh; color: var(--text-primary);
-    padding: 24px 16px;
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg); min-height: 100vh; color: var(--text-primary);
+    padding: 24px 16px; -webkit-font-smoothing: antialiased;
   }
   .container { max-width: 1180px; margin: 0 auto; }
   .header { text-align: center; padding: 12px 0 28px; }
   .header h1 {
-    font-size: 1.9rem; font-weight: 500; color: var(--text-primary);
-    line-height: 1.3; letter-spacing: -0.01em;
+    font-size: 1.9rem; font-weight: 500; line-height: 1.3; letter-spacing: -0.01em;
   }
   .header h1 .accent {
     background: linear-gradient(90deg, #4285f4 0%, #34a853 33%, #fbbc04 66%, #ea4335 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    font-weight: 700;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;
   }
   .header p { color: var(--text-secondary); margin-top: 8px; font-size: 0.9rem; }
 
@@ -56,7 +54,7 @@
     cursor: pointer; display: flex; align-items: center; gap: 8px;
     box-shadow: var(--shadow-1); font-family: inherit;
   }
-  .btn-save:hover { background: var(--google-blue-light); box-shadow: var(--shadow-2); }
+  .btn-save:hover { background: var(--google-blue-light); }
   .save-url-box {
     display: none; background: var(--google-blue-bg); border: 1px solid var(--google-blue);
     border-radius: 12px; padding: 12px 16px; font-size: 0.8rem; color: var(--google-blue);
@@ -68,7 +66,6 @@
     border-radius: 18px; padding: 6px 16px; cursor: pointer; font-size: 0.8rem;
     font-family: inherit; margin-top: 8px;
   }
-  .btn-copy:hover { background: var(--google-blue-bg); }
   .save-toast {
     display: none; background: var(--google-green-bg); border: 1px solid var(--google-green);
     color: var(--google-green); border-radius: 18px; padding: 8px 18px; font-size: 0.85rem;
@@ -83,24 +80,20 @@
     flex-wrap: wrap; gap: 12px; box-shadow: var(--shadow-1);
   }
   .countdown-box .cd-label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px; }
-  .countdown-box .cd-value {
-    font-size: 1.6rem; font-weight: 700; color: var(--google-red);
-    font-feature-settings: "tnum";
-  }
+  .countdown-box .cd-value { font-size: 1.6rem; font-weight: 700; color: var(--google-red); font-feature-settings: "tnum"; }
   .countdown-box .cd-sub { font-size: 0.78rem; color: var(--text-tertiary); margin-top: 2px; }
 
   .info-box {
     background: var(--google-blue-bg); border-left: 4px solid var(--google-blue);
     border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;
-    font-size: 0.85rem; color: var(--text-primary); line-height: 1.7;
+    font-size: 0.85rem; line-height: 1.7;
   }
   .info-box strong { color: var(--google-blue); }
 
-  /* 税金内訳ボックス */
   .tax-breakdown {
     background: var(--google-purple-bg); border-left: 4px solid var(--google-purple);
     border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;
-    font-size: 0.85rem; color: var(--text-primary); line-height: 1.7;
+    font-size: 0.85rem; line-height: 1.7;
   }
   .tax-breakdown h3 { font-size: 0.95rem; color: var(--google-purple); margin-bottom: 8px; font-weight: 500; }
   .tax-breakdown .tax-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 8px; }
@@ -108,12 +101,31 @@
   .tax-breakdown .tax-item .l { font-size: 0.72rem; color: var(--text-tertiary); }
   .tax-breakdown .tax-item .v { font-size: 0.95rem; font-weight: 600; color: var(--google-purple); font-feature-settings: "tnum"; }
 
+  /* 生活費低減カード */
+  .lifestyle-box {
+    background: var(--google-teal-bg); border-left: 4px solid var(--google-teal);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;
+    font-size: 0.85rem; line-height: 1.7;
+  }
+  .lifestyle-box h3 { font-size: 0.95rem; color: var(--google-teal); margin-bottom: 8px; font-weight: 500; }
+  .lifestyle-box .lifestyle-grid {
+    display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; margin-top: 10px;
+  }
+  .lifestyle-box .age-band {
+    background: white; border-radius: 8px; padding: 8px 6px; text-align: center;
+  }
+  .lifestyle-box .age-band .ab-age { font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 2px; }
+  .lifestyle-box .age-band .ab-pct { font-size: 0.95rem; font-weight: 700; color: var(--google-teal); font-feature-settings: "tnum"; }
+  .lifestyle-box .age-band .ab-yen { font-size: 0.7rem; color: var(--text-secondary); margin-top: 2px; font-feature-settings: "tnum"; }
+  .lifestyle-box .source-note {
+    font-size: 0.72rem; color: var(--text-tertiary); margin-top: 8px; line-height: 1.5;
+  }
+
   .warn-banner {
     background: var(--google-red-bg); border-left: 4px solid var(--google-red);
     border-radius: 8px; padding: 12px 18px; color: var(--google-red);
     font-size: 0.9rem; margin-bottom: 16px; display: none;
   }
-
   .summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
   .summary-card {
     background: var(--surface); border: 1px solid var(--border);
@@ -139,8 +151,8 @@
     border-radius: 16px; padding: 22px;
   }
   .card h2 {
-    font-size: 1rem; font-weight: 500; color: var(--text-primary);
-    margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    font-size: 1rem; font-weight: 500; margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 8px;
   }
   .card h2 .icon { font-size: 1.2rem; }
@@ -161,8 +173,7 @@
   input.date-input, input.life-date-input { text-align: left; padding-right: 14px; font-feature-settings: "tnum"; }
   input.comma-input:focus, input.plain-input:focus,
   input.date-input:focus, input.life-date-input:focus {
-    border-color: var(--google-blue);
-    box-shadow: 0 0 0 2px rgba(26,115,232,0.15);
+    border-color: var(--google-blue); box-shadow: 0 0 0 2px rgba(26,115,232,0.15);
   }
   input.life-date-input { border-color: #f9c8c4; background: #fff8f7; }
   input.life-date-input:focus { border-color: var(--google-red); box-shadow: 0 0 0 2px rgba(234,67,53,0.15); }
@@ -171,7 +182,6 @@
     border: 1px solid var(--border); background: var(--surface);
     color: var(--text-primary); font-size: 0.95rem; outline: none; font-family: inherit;
   }
-  input[type="text"].name-input:focus { border-color: var(--google-blue); box-shadow: 0 0 0 2px rgba(26,115,232,0.15); }
 
   .age-display {
     background: var(--google-blue-bg); border-radius: 8px;
@@ -196,7 +206,6 @@
     color: var(--text-primary); font-size: 0.95rem; outline: none;
     text-align: right; font-family: inherit;
   }
-  .extra-item .comma-wrap input:focus { border-color: var(--google-blue); box-shadow: 0 0 0 2px rgba(26,115,232,0.15); }
   .extra-item .comma-wrap .unit { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary); font-size: 0.78rem; pointer-events: none; }
   .btn-del {
     background: var(--google-red-bg); border: none; color: var(--google-red);
@@ -208,14 +217,12 @@
     cursor: pointer; font-size: 0.85rem; width: 100%; margin-top: 6px;
     font-weight: 500; font-family: inherit;
   }
+
   .chart-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 16px; padding: 22px; margin-bottom: 20px;
   }
-  .chart-card h2 {
-    font-size: 1rem; font-weight: 500; color: var(--text-primary);
-    margin-bottom: 4px; display: flex; align-items: center; gap: 10px;
-  }
+  .chart-card h2 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .chart-card .chart-sub { font-size: 0.78rem; color: var(--text-tertiary); margin-bottom: 16px; }
   .pill {
     display: inline-block; background: var(--google-blue-bg); border: 1px solid var(--google-blue);
@@ -223,17 +230,21 @@
     font-weight: 500; vertical-align: middle;
   }
   .pill.purple { background: var(--google-purple-bg); border-color: var(--google-purple); color: var(--google-purple); }
+  .pill.teal   { background: var(--google-teal-bg); border-color: var(--google-teal); color: var(--google-teal); }
   .footer { text-align: center; color: var(--text-tertiary); font-size: 0.75rem; padding: 24px 0; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
 
-  /* 税金トグル */
-  .tax-toggle {
+  .toggle-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .feature-toggle {
     display: flex; align-items: center; gap: 8px;
     background: var(--google-purple-bg); border-radius: 20px;
     padding: 6px 14px; font-size: 0.82rem; color: var(--google-purple); cursor: pointer;
     user-select: none; font-weight: 500;
   }
-  .tax-toggle input { width: 16px; height: 16px; accent-color: var(--google-purple); cursor: pointer; }
+  .feature-toggle.teal { background: var(--google-teal-bg); color: var(--google-teal); }
+  .feature-toggle input { width: 16px; height: 16px; cursor: pointer; }
+  .feature-toggle.teal input { accent-color: var(--google-teal); }
+  .feature-toggle input { accent-color: var(--google-purple); }
 
   @media (max-width: 720px) {
     .grid { grid-template-columns: 1fr; }
@@ -242,6 +253,7 @@
     .save-bar { justify-content: center; }
     .countdown-box { flex-direction: column; align-items: flex-start; }
     .tax-breakdown .tax-grid { grid-template-columns: 1fr 1fr; }
+    .lifestyle-box .lifestyle-grid { grid-template-columns: repeat(4,1fr); }
   }
 </style>
 </head>
@@ -249,14 +261,20 @@
 <div class="container">
   <div class="header">
     <h1>💰 死ぬまでに<span class="accent">悠々自適</span>に使える自由なお金シミュレータ</h1>
-    <p>限られた人生の時間を、お金で最大限に豊かに使うための逆算ツール（税金・社会保険料考慮版）</p>
+    <p>限られた人生の時間を、お金で最大限に豊かに使うための逆算ツール</p>
   </div>
 
   <div class="save-bar">
-    <label class="tax-toggle">
-      <input type="checkbox" id="taxEnabled" checked>
-      🧾 税金・社会保険料を考慮する
-    </label>
+    <div class="toggle-row">
+      <label class="feature-toggle">
+        <input type="checkbox" id="taxEnabled" checked>
+        🧾 税金・社会保険料を考慮
+      </label>
+      <label class="feature-toggle teal">
+        <input type="checkbox" id="lifestyleDecayEnabled" checked>
+        📉 加齢による生活費減少を考慮
+      </label>
+    </div>
     <span class="save-toast" id="saveToast">✅ URLをコピーしました！</span>
     <button class="btn-save" onclick="saveData()">💾 セーブ（URLに保存）</button>
   </div>
@@ -281,11 +299,23 @@
   <div id="warnBanner" class="warn-banner"></div>
   <div class="info-box" id="surplusBox">各項目に金額を入力するとシミュレーションが始まります。</div>
 
-  <!-- 税金内訳 -->
+  <!-- 加齢による生活費低減カード -->
+  <div class="lifestyle-box" id="lifestyleBox">
+    <h3>📉 年代別の生活費係数（家計調査ベース）</h3>
+    <div style="font-size:0.78rem; color:var(--text-secondary);">
+      入力した毎月の生活費を50代をベース（100%）として、年代ごとに係数を乗じて自動調整します。
+    </div>
+    <div class="lifestyle-grid" id="lifestyleGrid"></div>
+    <div class="source-note">
+      出典：総務省「家計調査（二人以上の世帯）」の世帯主年齢階級別消費支出データに基づく概算係数。
+      80代以降は活動量低下による減少と医療・介護費増加が相殺し緩やかな減少となります。
+    </div>
+  </div>
+
   <div class="tax-breakdown" id="taxBreakdown">
     <h3>🧾 初年度の税金・社会保険料の概算（簡易計算）</h3>
     <div style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:6px;">
-      ※給与所得を前提とした概算です。社会保険料は給与の約15%（65歳以降は約10%）、所得税は累進、住民税は約10%として計算しています。
+      ※給与所得を前提とした概算です。社会保険料は給与の約15%（65歳以降は約7%）、所得税は累進、住民税は約10%として計算しています。
     </div>
     <div class="tax-grid">
       <div class="tax-item"><div class="l">社会保険料</div><div class="v" id="txSocial">— 円</div></div>
@@ -330,7 +360,7 @@
         <div class="age-display" id="ageDisplay">現在の年齢: —</div>
       </div>
       <div class="form-group">
-        <label>💀 寿命予定日（何年何月何日まで生きるか）</label>
+        <label>💀 寿命予定日</label>
         <input class="life-date-input" type="date" id="lifeDate" value="2085-01-01">
         <div class="age-display life" id="lifeAgeDisplay">寿命年齢: —</div>
       </div>
@@ -365,7 +395,10 @@
     <div class="card">
       <h2><span class="icon">🏠</span>毎月の固定支出</h2>
       <div class="form-group"><label>家賃・住居費（円/月）</label><div class="input-wrap"><input class="comma-input" type="text" id="rent" value="0"><span class="unit">円</span></div></div>
-      <div class="form-group"><label>毎月の生活費（円/月）</label><div class="input-wrap"><input class="comma-input" type="text" id="living" value="0"><span class="unit">円</span></div></div>
+      <div class="form-group">
+        <label>毎月の生活費（円/月）<span style="font-weight:400;color:var(--text-tertiary);font-size:0.72rem;margin-left:6px;">※50代基準。年代別に自動調整されます</span></label>
+        <div class="input-wrap"><input class="comma-input" type="text" id="living" value="0"><span class="unit">円</span></div>
+      </div>
     </div>
     <div class="card">
       <h2><span class="icon">✈️</span>年間の特別支出・その他</h2>
@@ -376,7 +409,11 @@
   </div>
 
   <div class="chart-card">
-    <h2>📈 資産残高の推移 <span class="pill">毎日D円使用後</span> <span class="pill purple" id="taxPill">税金考慮</span></h2>
+    <h2>📈 資産残高の推移
+      <span class="pill">毎日D円使用後</span>
+      <span class="pill purple" id="taxPill">税金考慮</span>
+      <span class="pill teal" id="lifestylePill">生活費低減考慮</span>
+    </h2>
     <div class="chart-sub" id="chartSub1">毎日一定額を使い続けたときの資産残高の変化。寿命でゼロになります。</div>
     <canvas id="assetChart" height="80"></canvas>
   </div>
@@ -385,35 +422,41 @@
     <div class="chart-sub">現在から寿命まで、毎日同じ金額を使い続けられます。</div>
     <canvas id="dailyChart" height="80"></canvas>
   </div>
+  <div class="chart-card">
+    <h2>🏠 年代別の毎月生活費 <span class="pill teal">家計調査ベース</span></h2>
+    <div class="chart-sub" id="chartSub3">入力した生活費が年代に応じてどう変化するかの推移です。</div>
+    <canvas id="lifestyleChart" height="60"></canvas>
+  </div>
 
   <div class="footer">
-    ※ 税金・社会保険料は日本の制度に基づく概算値です。実際の納税額とは異なる場合があります。<br>
-    インフレ・配偶者控除・扶養控除・各種保険料控除等は考慮していません。
+    ※ 税金・社会保険料は日本の制度に基づく概算値です。<br>
+    生活費の年代別係数は総務省家計調査の傾向に基づきますが、個人差があります。インフレ・各種控除等は考慮していません。
   </div>
 </div>
 
 <script>
-let extraItems = [], assetChart, dailyChart;
+let extraItems = [], assetChart, dailyChart, lifestyleChart;
 
 // ── 日付ユーティリティ ──
-function parseDate(str) { if (!str) return null; const d = new Date(str); return isNaN(d.getTime()) ? null : d; }
+function parseDate(s) { if (!s) return null; const d = new Date(s); return isNaN(d.getTime()) ? null : d; }
 function calcAge(b, r) { let a = r.getFullYear()-b.getFullYear(); const m = r.getMonth()-b.getMonth(); if (m<0 || (m===0 && r.getDate()<b.getDate())) a--; return a; }
 function diffDays(d1, d2) { return Math.floor((d2.getTime()-d1.getTime())/86400000); }
 function formatJpDate(d) { return d ? `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日` : '—'; }
 
 // ── 数値 ──
-function toNum(id) { const el = document.getElementById(id); return el ? parseFloat(el.value.replace(/,/g, '')) || 0 : 0; }
+function toNum(id) { const el = document.getElementById(id); return el ? parseFloat(el.value.replace(/,/g,''))||0 : 0; }
 function formatComma(s) { const r = s.replace(/,/g,'').replace(/[^\d]/g,''); return r ? parseInt(r,10).toLocaleString('ja-JP') : ''; }
 function attachComma(el) {
   if (!el) return;
   el.addEventListener('focus', function() { this.value = this.value.replace(/,/g,''); });
-  el.addEventListener('blur', function() { if (this.value) this.value = formatComma(this.value); calculate(); });
+  el.addEventListener('blur',  function() { if (this.value) this.value = formatComma(this.value); calculate(); });
   el.addEventListener('input', calculate);
 }
 document.querySelectorAll('.comma-input').forEach(attachComma);
 document.querySelectorAll('.plain-input').forEach(el => el.addEventListener('input', calculate));
 document.querySelectorAll('.date-input, .life-date-input').forEach(el => el.addEventListener('input', calculate));
 document.getElementById('taxEnabled').addEventListener('change', calculate);
+document.getElementById('lifestyleDecayEnabled').addEventListener('change', calculate);
 
 function addExtraItem(name='', amount='') { extraItems.push({id:Date.now(),name,amount}); renderExtraItems(); calculate(); }
 function removeExtraItem(id) { extraItems = extraItems.filter(e=>e.id!==id); renderExtraItems(); calculate(); }
@@ -439,119 +482,87 @@ function fmt(n) {
 }
 
 // ──────────────────────────────────────────────
-// 税金・社会保険料の簡易計算（日本の制度ベース）
+// 加齢による生活費係数（総務省家計調査ベース・50代を100%として）
+// 出典：家計調査（二人以上の世帯）世帯主年齢階級別消費支出を参考
+// 食費・被服費・教養娯楽費・交際費の減少と医療費増加を統合
 // ──────────────────────────────────────────────
-
-// 給与所得控除（令和2年以降）
-function salaryDeduction(salary) {
-  if (salary <= 0) return 0;
-  if (salary <= 1_625_000) return 550_000;
-  if (salary <= 1_800_000) return salary*0.4 - 100_000;
-  if (salary <= 3_600_000) return salary*0.3 + 80_000;
-  if (salary <= 6_600_000) return salary*0.2 + 440_000;
-  if (salary <= 8_500_000) return salary*0.1 + 1_100_000;
-  return 1_950_000; // 上限
+const LIFESTYLE_COEFFICIENTS = [
+  { ageMin: 0,  ageMax: 49, coef: 0.95, label: '〜40代' },
+  { ageMin: 50, ageMax: 59, coef: 1.00, label: '50代' },
+  { ageMin: 60, ageMax: 64, coef: 0.92, label: '60代前半' },
+  { ageMin: 65, ageMax: 69, coef: 0.85, label: '60代後半' },
+  { ageMin: 70, ageMax: 74, coef: 0.78, label: '70代前半' },
+  { ageMin: 75, ageMax: 79, coef: 0.73, label: '70代後半' },
+  { ageMin: 80, ageMax: 200, coef: 0.70, label: '80代以上' }
+];
+function getLifestyleCoef(age) {
+  const band = LIFESTYLE_COEFFICIENTS.find(b => age >= b.ageMin && age <= b.ageMax);
+  return band ? band.coef : 1.00;
+}
+function getLifestyleLabel(age) {
+  const band = LIFESTYLE_COEFFICIENTS.find(b => age >= b.ageMin && age <= b.ageMax);
+  return band ? band.label : '—';
 }
 
-// 公的年金等控除（簡易：65歳以上）
-function pensionDeduction(pension, age) {
-  if (pension <= 0) return 0;
+// ──────────────────────────────────────────────
+// 税金・社会保険料の簡易計算
+// ──────────────────────────────────────────────
+function salaryDeduction(s) {
+  if (s <= 0) return 0;
+  if (s <= 1_625_000) return 550_000;
+  if (s <= 1_800_000) return s*0.4 - 100_000;
+  if (s <= 3_600_000) return s*0.3 + 80_000;
+  if (s <= 6_600_000) return s*0.2 + 440_000;
+  if (s <= 8_500_000) return s*0.1 + 1_100_000;
+  return 1_950_000;
+}
+function pensionDeduction(p, age) {
+  if (p <= 0) return 0;
   if (age >= 65) {
-    if (pension <= 3_300_000) return 1_100_000;
-    if (pension <= 4_100_000) return pension*0.25 + 275_000;
-    if (pension <= 7_700_000) return pension*0.15 + 685_000;
-    return pension*0.05 + 1_455_000;
+    if (p <= 3_300_000) return 1_100_000;
+    if (p <= 4_100_000) return p*0.25 + 275_000;
+    if (p <= 7_700_000) return p*0.15 + 685_000;
+    return p*0.05 + 1_455_000;
   } else {
-    if (pension <= 1_300_000) return 600_000;
-    if (pension <= 4_100_000) return pension*0.25 + 275_000;
-    if (pension <= 7_700_000) return pension*0.15 + 685_000;
-    return pension*0.05 + 1_455_000;
+    if (p <= 1_300_000) return 600_000;
+    if (p <= 4_100_000) return p*0.25 + 275_000;
+    if (p <= 7_700_000) return p*0.15 + 685_000;
+    return p*0.05 + 1_455_000;
   }
 }
-
-// 社会保険料の概算
-//   現役（〜65歳）：給与の約15%（健保6%+厚年9.15%+雇保等0.6% ≒ 14.5〜15.5%）
-//   65歳以上：年金からも健保・介護（約10%相当を年金額に対して）
 function socialInsurance(salary, pension, age) {
   let s = 0;
-  if (age < 65 && salary > 0) {
-    // 上限考慮：標準報酬月額の上限から逆算（およそ年収1,360万で頭打ち）
-    const cap = Math.min(salary, 13_600_000);
-    s += cap * 0.15;
-  } else if (salary > 0) {
-    // 65歳以降も働く場合は健保のみ（厚年は支払うが少額化）約7%
-    s += salary * 0.07;
-  }
-  if (pension > 0 && age >= 65) {
-    // 国保・介護保険の概算（年金額の約10%、上限あり）
-    s += Math.min(pension * 0.10, 800_000);
-  }
+  if (age < 65 && salary > 0) s += Math.min(salary, 13_600_000) * 0.15;
+  else if (salary > 0)        s += salary * 0.07;
+  if (pension > 0 && age >= 65) s += Math.min(pension * 0.10, 800_000);
   return Math.round(s);
 }
-
-// 所得税（累進）
-function incomeTax(taxableIncome) {
-  if (taxableIncome <= 0) return 0;
-  const brackets = [
-    [1_950_000,    0.05,         0],
-    [3_300_000,    0.10,    97_500],
-    [6_950_000,    0.20,   427_500],
-    [9_000_000,    0.23,   636_000],
-    [18_000_000,   0.33, 1_536_000],
-    [40_000_000,   0.40, 2_796_000],
-    [Infinity,     0.45, 4_796_000]
+function incomeTax(t) {
+  if (t <= 0) return 0;
+  const br = [
+    [1_950_000, 0.05, 0],[3_300_000, 0.10, 97_500],[6_950_000, 0.20, 427_500],
+    [9_000_000, 0.23, 636_000],[18_000_000, 0.33, 1_536_000],
+    [40_000_000, 0.40, 2_796_000],[Infinity, 0.45, 4_796_000]
   ];
-  for (const [limit, rate, deduct] of brackets) {
-    if (taxableIncome <= limit) {
-      return Math.round(taxableIncome * rate - deduct);
-    }
-  }
+  for (const [l,r,d] of br) if (t<=l) return Math.round(t*r-d);
   return 0;
 }
+function residentTax(t) { return t<=0 ? 0 : Math.round(t*0.10 + 5_000); }
 
-// 住民税（一律10% + 均等割5,000円）
-function residentTax(taxableIncome) {
-  if (taxableIncome <= 0) return 0;
-  return Math.round(taxableIncome * 0.10 + 5_000);
-}
-
-// その年の税金・社保・手取りを計算
 function calcAnnualTax(salary, pension, sideIncome, age) {
   const social = socialInsurance(salary, pension, age);
-
-  // 各所得を計算
-  const salaryIncome  = Math.max(0, salary - salaryDeduction(salary));
+  const salaryIncome  = Math.max(0, salary  - salaryDeduction(salary));
   const pensionIncome = Math.max(0, pension - pensionDeduction(pension, age));
-  // 副業：簡易的に経費0として雑所得扱い（基礎控除内なら非課税）
   const sideIncomeAmt = Math.max(0, sideIncome);
-
-  // 合計所得
   const totalIncome = salaryIncome + pensionIncome + sideIncomeAmt;
-
-  // 所得控除：基礎控除48万 + 社会保険料控除
-  const basicDeduction = 480_000;
-  const taxableIncome = Math.max(0, totalIncome - basicDeduction - social);
-
-  // 住民税は基礎控除43万で再計算
-  const taxableIncomeResident = Math.max(0, totalIncome - 430_000 - social);
-
+  const taxableIncome   = Math.max(0, totalIncome - 480_000 - social);
+  const taxableResident = Math.max(0, totalIncome - 430_000 - social);
   const incTax = incomeTax(taxableIncome);
-  const resTax = residentTax(taxableIncomeResident);
-  // 復興特別所得税2.1%上乗せ
   const incTaxWithSurtax = Math.round(incTax * 1.021);
-
+  const resTax = residentTax(taxableResident);
   const totalTax = social + incTaxWithSurtax + resTax;
   const grossIncome = salary + pension + sideIncome;
-  const netIncome = grossIncome - totalTax;
-
-  return {
-    social,
-    incomeTax: incTaxWithSurtax,
-    residentTax: resTax,
-    totalTax,
-    grossIncome,
-    netIncome
-  };
+  return { social, incomeTax: incTaxWithSurtax, residentTax: resTax, totalTax, grossIncome, netIncome: grossIncome - totalTax };
 }
 
 // ──────────────────────────────────────────────
@@ -562,6 +573,7 @@ function calculate() {
   const birthDate = parseDate(document.getElementById('birthDate').value);
   const lifeDate  = parseDate(document.getElementById('lifeDate').value);
   const taxOn = document.getElementById('taxEnabled').checked;
+  const lifestyleOn = document.getElementById('lifestyleDecayEnabled').checked;
 
   let ca = 40, lifeAge = 100, daysLeft = 0;
   if (birthDate) {
@@ -600,51 +612,73 @@ function calculate() {
   const ss  = toNum('sideStartAge');
   const se  = toNum('sideEndAge');
   const si  = toNum('sideIncome');
+  const livingMonthly = toNum('living');
 
   const extraTotal = extraItems.reduce((s,e)=>{
     const el = document.getElementById('eamt-'+e.id);
     return s + (el ? parseFloat(el.value.replace(/,/g,''))||0 : 0);
   }, 0);
-  const annualFixed = toNum('rent')*12 + toNum('living')*12 + toNum('special') + extraTotal;
 
-  // 初年度の税金内訳を表示
-  const firstYearSalary  = ca < ra  ? ai : 0;
-  const firstYearPension = ca >= psa ? pm*12 : 0;
-  const firstYearSide    = (ca >= ss && ca <= se) ? si : 0;
-  const firstYearTax = calcAnnualTax(firstYearSalary, firstYearPension, firstYearSide, ca);
+  // 家賃と特別費は加齢で減らさない、生活費のみ係数適用
+  const rentAnnual    = toNum('rent') * 12;
+  const specialAnnual = toNum('special') + extraTotal;
 
-  document.getElementById('txSocial').textContent  = (taxOn ? firstYearTax.social      : 0).toLocaleString() + ' 円';
-  document.getElementById('txIncome').textContent  = (taxOn ? firstYearTax.incomeTax   : 0).toLocaleString() + ' 円';
-  document.getElementById('txResident').textContent= (taxOn ? firstYearTax.residentTax : 0).toLocaleString() + ' 円';
-  document.getElementById('txTakeHome').textContent= (taxOn ? firstYearTax.netIncome : firstYearTax.grossIncome).toLocaleString() + ' 円';
+  // 生活費係数バンド表示
+  const baseLiving = livingMonthly;
+  document.getElementById('lifestyleGrid').innerHTML = LIFESTYLE_COEFFICIENTS.map(b => {
+    const coef = lifestyleOn ? b.coef : 1.00;
+    const monthly = Math.round(baseLiving * coef);
+    return `<div class="age-band">
+      <div class="ab-age">${b.label}</div>
+      <div class="ab-pct">${(coef*100).toFixed(0)}%</div>
+      <div class="ab-yen">${baseLiving>0 ? monthly.toLocaleString()+'円' : '—'}</div>
+    </div>`;
+  }).join('');
+
+  // 初年度の税金内訳
+  const fySalary  = ca < ra  ? ai : 0;
+  const fyPension = ca >= psa ? pm*12 : 0;
+  const fySide    = (ca >= ss && ca <= se) ? si : 0;
+  const fyTax = calcAnnualTax(fySalary, fyPension, fySide, ca);
+  document.getElementById('txSocial').textContent  = (taxOn ? fyTax.social      : 0).toLocaleString() + ' 円';
+  document.getElementById('txIncome').textContent  = (taxOn ? fyTax.incomeTax   : 0).toLocaleString() + ' 円';
+  document.getElementById('txResident').textContent= (taxOn ? fyTax.residentTax : 0).toLocaleString() + ' 円';
+  document.getElementById('txTakeHome').textContent= (taxOn ? fyTax.netIncome : fyTax.grossIncome).toLocaleString() + ' 円';
   document.getElementById('taxPill').textContent = taxOn ? '税金考慮' : '税金未考慮';
+  document.getElementById('lifestylePill').textContent = lifestyleOn ? '生活費低減考慮' : '生活費一定';
 
-  // シミュレーション
+  // シミュレーション本体
+  function getAnnualFixed(age) {
+    const coef = lifestyleOn ? getLifestyleCoef(age) : 1.00;
+    const livingAnnual = livingMonthly * 12 * coef;
+    return rentAnnual + livingAnnual + specialAnnual;
+  }
+
   function simulate(dailyD) {
     let bal = a0;
     const annualFree = dailyD * 365;
-    const balArr = [];
+    const balArr = [], fixedArr = [], livingArr = [];
     let ti = 0, te = 0, totalTaxAcc = 0;
     for (let age = ca; age <= lifeAge; age++) {
       const salary  = age < ra  ? ai      : 0;
       const pension = age >= psa ? pm * 12 : 0;
       const side    = (age >= ss && age <= se) ? si : 0;
       const grossInc = salary + pension + side;
-
       let netInc;
       if (taxOn) {
         const t = calcAnnualTax(salary, pension, side, age);
-        netInc = t.netIncome;
-        totalTaxAcc += t.totalTax;
-      } else {
-        netInc = grossInc;
-      }
+        netInc = t.netIncome; totalTaxAcc += t.totalTax;
+      } else { netInc = grossInc; }
 
+      const annualFixed = getAnnualFixed(age);
+      const coef = lifestyleOn ? getLifestyleCoef(age) : 1.00;
       bal = bal * (1 + rr) + netInc - annualFixed - annualFree;
       ti += grossInc; te += annualFixed;
       balArr.push(Math.round(bal));
+      fixedArr.push(annualFixed);
+      livingArr.push(Math.round(livingMonthly * coef));
     }
-    return { balArr, finalBal: bal, ti, te, totalTaxAcc };
+    return { balArr, fixedArr, livingArr, finalBal: bal, ti, te, totalTaxAcc };
   }
 
   let lo = 0, hi = 1_000_000_000;
@@ -653,37 +687,39 @@ function calculate() {
     simulate(mid).finalBal > 0 ? (lo = mid) : (hi = mid);
   }
   const optimalDaily = Math.max(0, Math.floor((lo + hi) / 2));
-  const { balArr, ti, te, totalTaxAcc } = simulate(optimalDaily);
+  const sim = simulate(optimalDaily);
 
-  const ages = [], ad = [], dd = [];
+  const ages = [], ad = [], dd = [], lvData = [];
   let za = null;
   for (let i = 0; i <= lifeAge - ca; i++) {
     const age = ca + i;
     ages.push(age + '歳');
-    ad.push(balArr[i]);
+    ad.push(sim.balArr[i]);
     dd.push(optimalDaily);
-    if (balArr[i] < 0 && !za) za = age;
+    lvData.push(sim.livingArr[i]);
+    if (sim.balArr[i] < 0 && !za) za = age;
   }
 
-  const fyInc = firstYearTax.grossIncome;
-  const fyNet = taxOn ? firstYearTax.netIncome : fyInc;
-  const fySurplus = fyNet - annualFixed;
+  const fyInc = fyTax.grossIncome;
+  const fyNet = taxOn ? fyTax.netIncome : fyInc;
+  const fySurplus = fyNet - getAnnualFixed(ca);
   document.getElementById('surplusBox').innerHTML =
-    `<b>📊 シミュレーション概要（${ca}歳 → ${lifeAge}歳 / 残り${lifeAge-ca}年）：</b><br>` +
+    `<b>📊 シミュレーション概要（${ca}歳 [${getLifestyleLabel(ca)}] → ${lifeAge}歳 / 残り${lifeAge-ca}年）：</b><br>` +
     `現在の年間収入（額面）<strong>${fyInc.toLocaleString()}円</strong>` +
     (taxOn ? ` → 手取り <strong>${fyNet.toLocaleString()}円</strong>` : ``) +
-    ` ／ 年間固定支出 <strong>${annualFixed.toLocaleString()}円</strong> ／ ` +
+    ` ／ 初年度固定支出 <strong>${getAnnualFixed(ca).toLocaleString()}円</strong> ／ ` +
     `年間収支差 <strong style="color:${fySurplus>=0?'var(--google-green)':'var(--google-red)'}">${fySurplus>=0?'+':''}${fySurplus.toLocaleString()}円</strong><br>` +
     `総資産 <strong>${a0.toLocaleString()}円</strong> を利回り <strong>${toNum('returnRate')}%</strong> で運用しながら` +
     (taxOn ? `税金・社保を支払い、` : ``) +
-    `固定費を支払い、<strong style="color:var(--google-blue)">毎日 ${optimalDaily.toLocaleString()}円</strong> を均等に使い続けると、` +
+    (lifestyleOn ? `加齢による生活費減少を反映し、` : ``) +
+    `<strong style="color:var(--google-blue)">毎日 ${optimalDaily.toLocaleString()}円</strong> を均等に使い続けると、` +
     `<strong style="color:var(--google-blue)">${lifeAge}歳でちょうどゼロ</strong>になります。`;
 
   document.getElementById('dailySubLabel').textContent = `${ca}歳〜${lifeAge}歳まで毎日均等に使える額`;
   document.getElementById('zeroSubLabel').textContent  = `${lifeAge}歳時点の余裕資産残高`;
   document.getElementById('sumDaily').textContent        = optimalDaily.toLocaleString();
-  document.getElementById('sumTotalIncome').textContent  = fmt(ti);
-  document.getElementById('sumTotalTax').textContent     = fmt(totalTaxAcc);
+  document.getElementById('sumTotalIncome').textContent  = fmt(sim.ti);
+  document.getElementById('sumTotalTax').textContent     = fmt(sim.totalTaxAcc);
 
   const ze = document.getElementById('sumZeroAge');
   const wb = document.getElementById('warnBanner');
@@ -698,7 +734,11 @@ function calculate() {
 
   document.getElementById('chartSub1').textContent =
     `毎日 ${optimalDaily.toLocaleString()}円を均等に使い続けたときの資産残高推移。${lifeAge}歳でゼロになります。` +
-    (taxOn ? `（税金・社会保険料を考慮）` : `（税金未考慮）`);
+    (taxOn ? `（税金考慮）` : `（税金未考慮）`) +
+    (lifestyleOn ? `（生活費低減考慮）` : ``);
+  document.getElementById('chartSub3').textContent =
+    `50代の生活費を100%として、家計調査の年代別係数を乗じた毎月の生活費。` +
+    (lifestyleOn ? `係数適用ON` : `係数適用OFF（一定）`);
 
   const sc = {
     x: { ticks:{color:'#5f6368',maxTicksLimit:13,font:{size:11}}, grid:{color:'#f1f3f4'} },
@@ -736,6 +776,22 @@ function calculate() {
       scales: { x: sc.x, y: { ...sc.y, min: 0, max: Math.max(optimalDaily*1.5, 100) } }
     }
   });
+
+  if (lifestyleChart) lifestyleChart.destroy();
+  lifestyleChart = new Chart(document.getElementById('lifestyleChart'), {
+    type: 'line',
+    data: { labels: ages, datasets:[{
+      data: lvData, borderColor:'#00897b', backgroundColor:'rgba(0,137,123,0.12)',
+      fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2.5, stepped: lifestyleOn ? 'before' : false
+    }]},
+    options: {
+      responsive: true, interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{display:false}, tooltip:{
+        backgroundColor:'rgba(32,33,36,0.95)', titleColor:'#fff', bodyColor:'#fff',
+        callbacks:{label: c=>' 毎月生活費: '+c.parsed.y.toLocaleString()+' 円'}}},
+      scales: { x: sc.x, y: { ...sc.y, min: 0 } }
+    }
+  });
 }
 
 // ── セーブ・ロード ──
@@ -756,6 +812,7 @@ function gatherData() {
     sideIncome: toNum('sideIncome'),
     rent: toNum('rent'), living: toNum('living'), special: toNum('special'),
     taxEnabled: document.getElementById('taxEnabled').checked,
+    lifestyleDecayEnabled: document.getElementById('lifestyleDecayEnabled').checked,
     extras
   };
 }
@@ -791,6 +848,7 @@ function loadFromUrl() {
     setC('sideIncome', data.sideIncome);
     setC('rent', data.rent); setC('living', data.living); setC('special', data.special);
     if (data.taxEnabled !== undefined) document.getElementById('taxEnabled').checked = data.taxEnabled;
+    if (data.lifestyleDecayEnabled !== undefined) document.getElementById('lifestyleDecayEnabled').checked = data.lifestyleDecayEnabled;
     if (data.extras) data.extras.forEach(ex => addExtraItem(ex.name, ex.amount));
   } catch(e) { console.warn('ロード失敗', e); }
 }
